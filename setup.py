@@ -9,7 +9,7 @@ with open("LICENSE", "r") as lf:
 
 # TODO: get version from chemlibtreemap.__init__.py
 def get_version():
-    return None
+    return "0.0.1"
 
 setup(
     name="chemlib_treemap", 
@@ -21,18 +21,23 @@ setup(
     url="https://github.com/yanshouyu/chem-lib-treemap", 
     # TODO: project_urls dict, keys: Documentation, Source, ...
     license=LICENSE, 
-    keywords=["Cheminformatics", "TreeMap", "Visualization"], 
     install_requires=[
         "faerun", 
         "matplotlib", 
-        "numpy", 
         "pandas", 
         "tmap", 
+        "mhfp", 
     ], 
     entry_points={
         "console_scripts": [
-            "single_treemap = chemlibtreemap.main:single_treemap", 
+            "single-treemap = chemlibtreemap.main:single_treemap", 
         ]
     }, 
-    # TODO: classifiers.
+    classifiers=[
+        'Programming Language :: Python :: 3.7',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: MIT License',
+        'Topic :: Scientific/Engineering :: Chem-Informatics'
+    ],
+    keywords=["Cheminformatics", "TreeMap", "Visualization"], 
 )

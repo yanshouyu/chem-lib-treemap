@@ -1,0 +1,14 @@
+name: chem_lib_treemap
+channels:
+  - defaults
+  - conda-forge
+  - rdkit
+dependencies:
+  - matplotlib
+  - faerun
+  - mhfp
+  - python=3.7
+  - tmap
+  - pandas
+  - rdkit
+prefix: /Users/yanshouyu/miniconda3/envs/chem_lib_treemap
