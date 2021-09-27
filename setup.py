@@ -7,9 +7,19 @@ with open("README.md", "r") as rf:
 with open("LICENSE", "r") as lf:
     LICENSE = lf.read()
 
-# TODO: get version from chemlibtreemap.__init__.py
 def get_version():
-    return "0.0.1"
+    "get version from chemlibtreemap/__init__.py"
+    fpath = os.path.join(
+        os.path.abspath(os.path.dirname(__file__)), 
+        "chemlibtreemap", "__init__.py"
+    )
+    with open(fpath, "r") as f:
+        for line in f:
+            if line.startswith("__version__"):
+                delim = '"' if '"' in line else "'"
+                return line.split(delim)[1]
+        else:
+            raise RuntimeError("Unable to find version string")
 
 setup(
     name="chemlib_treemap", 
