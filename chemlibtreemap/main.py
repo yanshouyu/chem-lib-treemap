@@ -35,7 +35,8 @@ def create_parser() -> argparse.ArgumentParser:
         nargs="*")
     parser.add_argument(
         "--features", type=argparse.FileType("r"), required=False, 
-        help=("additional feature table in csv format, header and id column required, "
+        help=("additional NUMERICAL feature (float/int) table in csv format, "
+        "header and id column required, "
         "id should be consistent with library table"))
     return parser
 
