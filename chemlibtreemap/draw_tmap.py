@@ -74,6 +74,9 @@ def draw_tmap(
         feature_df = pd.read_csv(features, index_col='id')
         libdf = libdf.join(feature_df)
     
+    # check output dir existance
+    if (not os.path.exists(output)) or (not os.path.isdir(output)):
+        os.makedirs(output)
     libdf.to_csv(os.path.join(output, "data.csv"))
     
     fp_gen = get_fp_generator(fingerprint)
