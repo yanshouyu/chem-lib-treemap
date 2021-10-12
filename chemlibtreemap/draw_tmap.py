@@ -1,4 +1,5 @@
 import os
+import pickle
 import tmap
 from faerun import Faerun
 import pandas as pd
@@ -134,6 +135,15 @@ def draw_tmap(
 
     x, y, s, t, _ = tmap.layout_from_lsh_forest(lf)
     logger.debug("tmap layout calculated")
+    # tmap.VectorFloat not dumpable, convert them to list
+    with open(os.path.join(output, "layout.pkl"), "wb") as f:
+        pickle.dump({
+            "x": list(x), 
+            "y": list(y), 
+            "s": list(s), 
+            "t": list(t), 
+        }, f)
+        logger.debug("layout data (x, y, s, t) saved.")
 
     if matplotlib:
         draw_mpl(x, y, s, t, libdf, output)
