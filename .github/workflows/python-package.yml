@@ -15,13 +15,15 @@ jobs:
         uses: actions/cache@v2.1.7
         with:
           path: ~/conda_pkgs_dir
+          key: ${{ runner.os }}-conda-${{ hashFiles('environment.yml') }}
       - name: Set up conda for python ${{ matrix.python-version}}
         uses: conda-incubator/setup-miniconda@v2
         with:
+          activate-environment: chem_lib_treemap
           environment-file: environment.yml
           python-version: ${{ matrix.python-version}}
-          activate-environment: chem_lib_treemap
           auto-activate-base: false
+          use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
       - name: activate env
         run: conda activate chem_lib_treemap
       - name: Conda info
