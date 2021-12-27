@@ -3,6 +3,7 @@ channels:
   - defaults
   - conda-forge
   - rdkit
+  - tmap
 dependencies:
   - matplotlib
   - faerun
