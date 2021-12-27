@@ -6,6 +6,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     strategy:
       matrix:
         python-version: ["3.6", "3.7", "3.8", "3.9"]
@@ -19,7 +22,9 @@ jobs:
           python-version: ${{ matrix.python-version}}
           auto-activate-base: true
       - name: activate env
-        run: conda activate chem_lib_treemap
+        run: |
+          conda init bash
+          conda activate chem_lib_treemap
       - name: Conda info
         run: conda info
       - name: lint with flake8
