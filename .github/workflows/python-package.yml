@@ -11,12 +11,21 @@ jobs:
         python-version: ["3.6", "3.7", "3.8", "3.9"]
     steps:
       - uses: actions/checkout@v2
+      - name: Cache conda
+        uses: actions/cache@v2.1.7
+        with:
+          path: ~/conda_pkgs_dir
       - name: Set up conda for python ${{ matrix.python-version}}
         uses: conda-incubator/setup-miniconda@v2
         with:
           environment-file: environment.yml
           python-version: ${{ matrix.python-version}}
           activate-environment: chem_lib_treemap
+          auto-activate-base: false
+      - name: activate env
+        run: conda activate chem_lib_treemap
+      - name: Conda info
+        run: conda info
       - name: lint with flake8
         run: |
           conda install flake8
