@@ -7,8 +7,7 @@ dependencies:
   - matplotlib
   - faerun
   - mhfp
-  - python=3.7
+  - python
   - tmap
   - pandas
   - rdkit
-prefix: /Users/yanshouyu/miniconda3/envs/chem_lib_treemap
