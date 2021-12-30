@@ -21,15 +21,15 @@ jobs:
           environment-file: environment.yml
           python-version: ${{ matrix.python-version}}
           auto-activate-base: true
-      - name: activate env
+      - name: prepare env
         run: |
           conda init bash
           conda activate chem_lib_treemap
+          conda install flake8 pytest
       - name: Conda info
         run: conda info
       - name: lint with flake8
         run: |
-          conda install flake8
           # stop the build if there are Python syntax errors or undefined names
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
@@ -38,5 +38,4 @@ jobs:
         run: pip install .
       - name: test with pytest
         run: |
-          conda install pytest
           pytest
